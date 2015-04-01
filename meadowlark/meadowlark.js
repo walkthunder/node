@@ -1,5 +1,7 @@
 var express = require('express');
 var app = express();
+var fortune =  require('./lib/fortune.js');
+
 app.set('port',process.env.PORT||3000);
 
 
@@ -20,9 +22,10 @@ app.get('/', function(req,res){
 });
 
 app.get('/about',function(req,res){
-	var randomFortune = fortunes[Math.floor(Math.random()*fortunes.length)];
-	res.render('about',{fortune:randomFortune});
+	
+	res.render('about',{fortune:fortune.getFortune()});
 });
+
 //404 catch-all
 app.use(function(req,res){
 	res.status(404);
@@ -41,14 +44,7 @@ app.listen(app.get('port'),function(){
 	console.log('Express started on http://localhost:'+app.get('port')+'; Press Ctrl-c to terminate.');
 });
 
-//virtual cookie
-var fortunes = [
-	"COnquer your fears or they will conquer you.",
-	"River need springs.",
-	"Do not fear what you don't know.",
-	"You will have a pleasure surprise.",
-	"Whenever possible, keep it simple.",
-];
+
 
 /*
 function serveStaticFile(res,path,contentType, responseCode) {
