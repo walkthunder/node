@@ -1,0 +1,15 @@
+{
+  "name": "test1",
+  "version": "1.0.0",
+  "description": "the first test version to see what's this",
+  "main": "helloWorld.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Aaron",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.12.3",
+    "express3-handlebars": "^0.5.2"
+  }
+}
